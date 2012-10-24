@@ -9,6 +9,12 @@ __license__   = "MIT"
 import air
 import sys
 
+# This code requires numpy (pip install numpy) 
+# and matplotlib (pip install matplotlib)
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 ################################################################################
 ##
 def main():
@@ -30,6 +36,8 @@ def main():
     store.connect()
     print "test" + sys.argv[0]
 
+    p = list()
+
     app = store.get_application(sys.argv[1])
     #print ' Application: %s' % app
     for res_str in app.list_resources():
@@ -38,9 +46,19 @@ def main():
         print info.get_data()
 
         sensor = res.get_sensor("default_sensor")
-        print sensor.read()
+        data = sensor.read()
+        for d in data:
+        	#print d.split(";")[5]
+            p.append(d.split(";")[5])
 
-
+    plt.subplot(111)
+    plt.title('System Memory Trace')
+    plt.ylabel('Gigabyte')
+    plt.xlabel('Process Runtime (s)')
+    #plt.ylim(ymax=(system_specs.totalmem/1024/1024/1024))
+    #plt.plot(ts, pfree, 'g-')
+    plt.plot(p, 'r-')
+    plt.show()
 
     sys.exit(0)
 
