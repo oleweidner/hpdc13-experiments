@@ -2,7 +2,7 @@
 
 module load python
 . $HOME/software/pythonenv/bin/activate
-export BOWTIE_DIR=/N/u/oweidner/software/bowtie2/
+export BOWTIE_DIR=$HOME/software/bowtie2/
 
 export RUN=HOTEL_bowtie-Marisa_miRNA-1_qseq.fq
 

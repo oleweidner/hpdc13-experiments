@@ -2,7 +2,7 @@
 
 module load python
 . $HOME/software/pythonenv/bin/activate
-export BFAST_DIR=/N/u/oweidner/software/bfast/
+export BFAST_DIR=$HOME/software/bfast/
 
 export RUN=HOTEL_bfast_fewwd_bj128_ref3G_read170M
 
