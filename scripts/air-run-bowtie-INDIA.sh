@@ -1,7 +1,7 @@
 #!/bin/bash  
 
 module load python
-. $HOME/software/bigjob-bliss/bin/activate
+. $HOME/software/pythonenv/bin/activate
 export BOWTIE_DIR=/N/u/oweidner/software/bowtie2/
 
 export RUN=bowtie-Marisa_miRNA-1_qseq.fq

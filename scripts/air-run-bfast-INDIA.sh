@@ -1,7 +1,7 @@
 #!/bin/bash  
 
 module load python
-. $HOME/software/bigjob-bliss/bin/activate
+. $HOME/software/pythonenv/bin/activate
 export BFAST_DIR=/N/u/oweidner/software/bfast/
 
 export RUN=bfast_fewwd_bj128_ref3G_read170M
