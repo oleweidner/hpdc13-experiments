@@ -20,9 +20,9 @@ if __name__ == "__main__":
     pilot_compute_description=[]
 
     pilot_compute_description.append({ "service_url": "pbs+ssh://localhost",
-                                       "number_of_processes": (num_proc*2) ,
+                                       "number_of_processes": num_proc*2, 
 	                               "queue": "batch",
-                                     # "processes_per_node":8,
+                                       #"processes_per_node":4,
                                        "working_directory": "/N/u/oweidner/agent",
                                        "walltime":30,
                                      })
@@ -41,7 +41,7 @@ if __name__ == "__main__":
     for i in range(num_proc):
         compute_unit_description = {
                 "executable": "/N/u/oweidner/hpdc13-experiments/scripts/air-run-bowtie-INDIA.sh",
-                "arguments": ["-%s-%s-procs" % (run_name, num_proc)],
+                "arguments": ["%s-%s-procs" % (run_name, num_proc)],
                 "total_cpu_count": 2,            
                 "output": "bowtie-stdout.txt",
                 "error" : "bowtie-stderr.txt",
