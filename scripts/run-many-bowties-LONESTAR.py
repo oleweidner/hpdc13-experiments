@@ -40,7 +40,7 @@ if __name__ == "__main__":
     # submit compute units
     for i in range(num_proc):
         compute_unit_description = {
-                "executable": "%s/hpdc13-experiments/scripts/air-run-bowtie-LONESTAR.sh" % % os.getenv('WORK'),
+                "executable": "%s/hpdc13-experiments/scripts/air-run-bowtie-LONESTAR.sh" % os.getenv('WORK'),
                 "arguments": ["%s-%s-procs" % (run_name, num_proc)],
                 "total_cpu_count": 2,            
                 "output": "bowtie-stdout.txt",
