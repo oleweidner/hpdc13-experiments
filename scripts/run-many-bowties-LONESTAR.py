@@ -1,4 +1,10 @@
-""" Example application demonstrating how to submit a jobs with PilotJob.  """
+""" Run many bowties on lonestar.tacc.utexas.edu via BigJob.
+
+    Example:  python run-many-bowties-LONESTAR.py run01 16
+    
+              This runs 16 bowtie tasks and makes them available 
+              in Air under the app key: LONESTAR_BOWTIE_run01-16-procs
+"""
 
 import os
 import time
@@ -21,8 +27,7 @@ if __name__ == "__main__":
 
     pilot_compute_description.append({ "service_url": "sge://localhost",
                                        "number_of_processes": num_proc*2, 
-	                               "queue": "development",
-                                       #"processes_per_node":4,
+	                                   "queue": "development",
                                        "working_directory": "%s/agent" % os.getenv('WORK'),
                                        "walltime":120,
                                      })
