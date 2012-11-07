@@ -14,6 +14,21 @@ import sys
 #import numpy as np
 #import matplotlib.pyplot as plt
 
+"""
+Calculate mean and standard deviation of data x[]:
+    mean = {\sum_i x_i \over n}
+    std = sqrt(\sum_i (x_i - mean)^2 \over n-1)
+"""
+def meanstdv(x):
+    from math import sqrt
+    n, mean, std = len(x), 0, 0
+    for a in x:
+        mean = mean + a
+    mean = mean / float(n)
+    for a in x:
+        std = std + (a - mean)**2
+    std = sqrt(std / float(n-1))
+    return mean, std
 
 ################################################################################
 ##
@@ -60,10 +75,13 @@ def main():
 
         delta_t =  termination_time - create_time 
         sum += delta_t
+        p.append(delta_t)
         sum_iter += 1
         print "%s" % (delta_t)
 
-    print "Average: %s" % (sum / sum_iter)
+    (means, stddev) = meanstdv(p)
+    print "Mean: %s " % (means)
+    print "Std Deviation: %s " % (stddev)
     print "Earliest start time: %s " % earlies_start_time
     print "Latest start time: %s " % latest_start_time
 
