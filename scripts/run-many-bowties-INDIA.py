@@ -1,4 +1,10 @@
-""" Example application demonstrating how to submit a jobs with PilotJob.  """
+""" Run many bowties on india.futuregrid.org via BigJob.
+
+    Example:  python run-many-bowties-INDIA.py run01 16
+
+              This runs 16 bowtie tasks and makes them available 
+              in Air under the app key: INDIA_BOWTIE_run01-16-procs
+"""
 
 import os
 import time
@@ -19,11 +25,16 @@ if __name__ == "__main__":
     pilot_compute_service = PilotComputeService("redis://ILikeBigJob_wITH-REdIS@gw68.quarry.iu.teragrid.org:6379")
     pilot_compute_description=[]
 
-    pilot_compute_description.append({ "service_url": "pbs+ssh://localhost",
+    pilot_compute_description.append({ "service_url": "pbs://localhost",
                                        "number_of_processes": num_proc*2, 
+<<<<<<< HEAD
 	                               "queue": "batch",
                                        #"number_of_processes":6,
                                        "working_directory": "/N/u/oweidner/agent",
+=======
+	                                   "queue": "batch",
+                                       "working_directory": "%s/agent" % os.getenv('HOME'),
+>>>>>>> 67cc5f4e0fb1944385cb5a9b9c4d60e4af61c4b4
                                        "walltime":30,
                                      })
 
@@ -40,7 +51,7 @@ if __name__ == "__main__":
     # submit compute units
     for i in range(num_proc):
         compute_unit_description = {
-                "executable": "/N/u/oweidner/hpdc13-experiments/scripts/air-run-bowtie-INDIA.sh",
+                "executable": "%s/hpdc13-experiments/scripts/air-run-bowtie-INDIA.sh" % os.getenv('HOME'),
                 "arguments": ["%s-%s-procs" % (run_name, num_proc)],
                 "total_cpu_count": 2,            
                 "output": "bowtie-stdout.txt",
