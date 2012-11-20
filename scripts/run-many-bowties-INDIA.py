@@ -22,7 +22,7 @@ if __name__ == "__main__":
     pilot_compute_description.append({ "service_url": "pbs+ssh://localhost",
                                        "number_of_processes": num_proc*2, 
 	                               "queue": "batch",
-                                       #"processes_per_node":4,
+                                       #"number_of_processes":6,
                                        "working_directory": "/N/u/oweidner/agent",
                                        "walltime":30,
                                      })
